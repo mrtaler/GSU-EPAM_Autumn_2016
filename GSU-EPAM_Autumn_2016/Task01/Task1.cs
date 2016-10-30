@@ -34,9 +34,13 @@ namespace GSU_EPAM_Autumn_2016.Task01
 
             //};
             #endregion
-            Console.WriteLine("---------------------------------2 - 4--------------------------------");
+            Console.WriteLine("--------------------------------2 - 4--------------------------------");
 
-            //this array was needed for save equal purchases  // PurchaseOfGoods[] equals = new PurchaseOfGoods[0];
+            // этот массив нужен был для хранения одинаковых покупок
+            // PurchaseOfGoods[] equals = new PurchaseOfGoods[0]
+            // явный вызов ToString() для полей класса при переопределении метода был использован по привычке.
+
+            ;
 
             int indexin = 0;
             int countEqual = 1;
@@ -63,7 +67,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
             }
 
             Console.WriteLine();
-            Console.WriteLine("-------------------------show equals element--------------------------");
+            Console.WriteLine("-------------------------show equals element-------------------------");
             #region sub task4: show equals element
 
             Console.WriteLine(
@@ -71,7 +75,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
                 "all purchases eqal" :
                 "Purchases are not eqal"
                 );
-
+            //данный участок выводит повторяющиеся покупки
             //foreach (var item in equals)
             //{
             //    Console.WriteLine(item);
