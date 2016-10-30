@@ -45,6 +45,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task1\Task01.cs" />
+    <Compile Include="Task1\TravelExpenses.cs" />
+    <Compile Include="Task2\HomogeneousObject.cs" />
+    <Compile Include="Task2\PhElement.cs" />
+    <Compile Include="Task2\Task02.cs" />
+    <Compile Include="Task3\Purchase.cs" />
+    <Compile Include="Task3\Task03.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
