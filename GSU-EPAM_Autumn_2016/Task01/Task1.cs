@@ -25,12 +25,12 @@ namespace GSU_EPAM_Autumn_2016.Task01
             #region equal array
             //  PurchaseOfGoods[] pofg = new PurchaseOfGoods[]
             //  {
-            //                  new PurchaseWithFixDiscountPurchaseOfGoods("Purchase 1", 10, 20.33M, 73M),
-            //                  new PurchaseWithFixDiscountPurchaseOfGoods("Purchase 1", 122, 20.33M, 73M),
-            //                  new PurchaseOfGoods("Purchase 1", 41,  20.33M),
-            //                  new PurchaseOfGoods("Purchase 1", 61, 20.33M),
-            //                  new PurchaseWithDiscountToCountPurchaseOfGoods("Purchase 1", 1, 20.33M, 73M),
-            //                  new PurchaseWithDiscountToCountPurchaseOfGoods("Purchase 1", 1, 20.33M, 71M)
+            //                    new PurchaseWithFixDiscountPurchaseOfGoods("Purchase 1", 10, 20.33M, 73M),
+            //                    new PurchaseWithFixDiscountPurchaseOfGoods("Purchase 1", 122, 20.33M, 73M),
+            //                    new PurchaseOfGoods("Purchase 1", 41,  20.33M),
+            //                    new PurchaseOfGoods("Purchase 1", 61, 20.33M),
+            //                    new PurchaseWithDiscountToCountPurchaseOfGoods("Purchase 1", 1, 20.33M, 73M),
+            //                    new PurchaseWithDiscountToCountPurchaseOfGoods("Purchase 1", 1, 20.33M, 71M)
 
             //};
             #endregion
@@ -40,7 +40,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
             // PurchaseOfGoods[] equals = new PurchaseOfGoods[0]
             // явный вызов ToString() для полей класса при переопределении метода был использован по привычке.
             int indexin = 0;
-            string flag = string.Empty;
+            bool isEqual = true;
             PurchaseOfGoods maxPurchase = pofg[0];
             foreach (var item in pofg)
             {
@@ -53,9 +53,9 @@ namespace GSU_EPAM_Autumn_2016.Task01
                 #region sub task 4: find equals purchase
                 //{
 
-                if (flag == string.Empty && indexin < pofg.Length - 1)
+                if (isEqual && indexin < pofg.Length - 1)
                 {
-                    flag = item.Equals(pofg[++indexin]) ? string.Empty : "e";
+                    isEqual = item.Equals(pofg[++indexin]) ? true : false;
                 }
 
                 #endregion
@@ -68,7 +68,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
             #region sub task4: show equals element
 
             Console.WriteLine(
-                flag == string.Empty ?
+                isEqual == true ?
                 "all purchases eqal" :
                 "Purchases are not eqal"
                 );
