@@ -45,19 +45,19 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Task01\PurchaseOfGoods.cs" />
-    <Compile Include="Task01\PurchaseWithDiscountToCountPurchaseOfGoods.cs" />
-    <Compile Include="Task01\PurchaseWithFixDiscountPurchaseOfGoods.cs" />
     <Compile Include="Task01\Task1.cs" />
-    <Compile Include="Task02\AbstractPurchase.cs" />
-    <Compile Include="Task02\Commodity.cs" />
-    <Compile Include="Task02\PurchaseWithDiscountToCostAbstractPurchase.cs" />
-    <Compile Include="Task02\PurchaseWithDiscountToCountAbstractPurchase.cs" />
-    <Compile Include="Task02\PurchaseWithTransportationCostsAbstractPurchase.cs" />
     <Compile Include="Task02\Task2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Task01\Input1.csv" />
+    <None Include="Task01\Input2.csv" />
+    <None Include="Task01\Input3.csv" />
+    <None Include="Task01\Input4.csv" />
+    <None Include="Task01\Input5.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Task03\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
