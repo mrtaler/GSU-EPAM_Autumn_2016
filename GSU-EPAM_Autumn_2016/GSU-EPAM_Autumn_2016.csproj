@@ -55,6 +55,7 @@
     <None Include="Task01\Input3.csv" />
     <None Include="Task01\Input4.csv" />
     <None Include="Task01\Input5.csv" />
+    <None Include="Task02\Input1.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Task03\" />

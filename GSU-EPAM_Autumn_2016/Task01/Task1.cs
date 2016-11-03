@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using GSU_EPAM_Autumn_2016;
 
 namespace GSU_EPAM_Autumn_2016.Task01
 {
@@ -24,7 +25,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
             foreach (var itemFileName in fileNameaArray)
             {
                 Console.WriteLine("File is: " + itemFileName); //show file name with worked now
-                string[] war = LoadFileInStringPerLineStrings(itemFileName); //read all file per line
+                string[] war = Program.LoadFileInStringPerLineStrings(itemFileName, "Task01"); //read all file per line
                 StringBuilder[] result = CountSummFromAllString(war); //work with file data in string
 
                 //show result
@@ -34,87 +35,11 @@ namespace GSU_EPAM_Autumn_2016.Task01
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
-            Console.ReadKey();
+
 
 
         }
 
-        /// <summary>
-        /// Method for loads csv in to string[] per line
-        /// </summary>
-        /// <param name="fileName">File name</param>
-        /// <returns>csv in string</returns>
-        private static string[] LoadFileInStringPerLineStrings(string fileName)
-        {
-            //find file in working directory
-            string substr = "bin\\debug";
-            string filePatch = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
-                 .ToLower().Replace(substr, "")
-                 + "Task01\\" + fileName;
-
-            string[] fileDataPerLine = null;
-            #region read and write not null stribg from file
-            try
-            {
-                int count = 0;
-                #region Open file and count not null strings 
-                try
-                {
-                    //file open and count line.
-                    using (StreamReader ins = new StreamReader(filePatch))
-                    {
-                        string line = ins.ReadLine();//read line
-                        while (line != null)
-                        {
-                            if (line.Trim().Length > 0) //check line on empty
-                            {
-                                count++;
-                            }
-                            line = ins.ReadLine();
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("s: File is not open for read");
-                }
-                #endregion
-                //generate string based on conut not null strings in file
-                fileDataPerLine = new string[count];
-                #region write all not null string from file
-                try
-                {
-                    using (StreamReader ins = new StreamReader(filePatch))
-                    {
-                        string line = ins.ReadLine();
-                        count = 0;
-                        while (line != null)
-                        {
-                            line = line.Trim();//delete start end spases
-                            if (line.Length > 0)
-                            {
-                                fileDataPerLine[count++] = line;
-                            }
-                            line = ins.ReadLine();
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("s: File is not open for read and write to file");
-                    fileDataPerLine = null;
-                }
-                #endregion
-                return fileDataPerLine;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("s: File is not open");
-                return null;
-            }
-            #endregion
-        }
         /// <summary>
         /// Method for count sum from string with using the pointer with the index 0 
         /// </summary>
