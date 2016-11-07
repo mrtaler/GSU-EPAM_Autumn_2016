@@ -14,8 +14,6 @@ namespace GSU_EPAM_Autumn_2016
             Console.WriteLine("*******************Task 02*******************");
             new Task2();
             Console.ReadKey();
-
-
         }
 
 
@@ -94,6 +92,35 @@ namespace GSU_EPAM_Autumn_2016
                 return null;
             }
             #endregion
+        }
+        public static void SaveStringinFilePerLineStrings(string fileName, string task, string[] inputStrings)
+        {
+            //find file in working directory
+            string substr = "bin\\debug";
+            string filePatch = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
+                 .ToLower().Replace(substr, "")
+                 + task + "\\" + fileName;
+
+            int count = inputStrings.Length;
+            #region Open file
+            try
+            {
+                //file open and count line.
+                using (StreamWriter ins = new StreamWriter(filePatch))
+                {
+                    foreach (var lineWrite in inputStrings)
+                    {
+                        ins.WriteLine(lineWrite);//write line
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("s: File is not open for read");
+            }
+            #endregion
+            //generate string based on conut not null strings in file
         }
     }
 }

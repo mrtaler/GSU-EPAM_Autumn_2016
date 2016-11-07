@@ -47,6 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task01\Task1.cs" />
     <Compile Include="Task02\Task2.cs" />
+    <Compile Include="Task02\UniversalChange.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -55,6 +56,7 @@
     <None Include="Task01\Input3.csv" />
     <None Include="Task01\Input4.csv" />
     <None Include="Task01\Input5.csv" />
+    <None Include="Task02\Input1 - Копировать.csv" />
     <None Include="Task02\Input1.csv" />
   </ItemGroup>
   <ItemGroup>
