@@ -10,27 +10,32 @@ namespace GSU_EPAM_Autumn_2016.Task02
 {
     public abstract class UniversalChange
     {
-        protected string inputData;
-        protected string outputData;
-
-        protected UniversalChange(string inputData, string outputData)
+        protected UniversalChange()
         {
-            this.inputData = inputData;
-            this.outputData = outputData;
         }
-        public void ReplaceAndSave(string[] lines, string pattern)
+        public string[] ReplasePatternPerString(string[] inputStrings, string patternFind)
         {
-            using (StreamWriter st = new StreamWriter(this.inputData))
+            try
             {
-                foreach (var str in lines)
+                int indexOfArray = 0;
+                foreach (var lineWrite in inputStrings)
                 {
-                    string tmp = Regex.Replace(str, pattern, Changer);
-                    st.WriteLine(tmp);
+                    if (Regex.IsMatch(lineWrite, patternFind))
+                    {
+                        inputStrings[indexOfArray] = Regex.Replace(lineWrite, patternFind, Changer);
+                    }
+                    indexOfArray++;
                 }
-                st.Close();
+                return inputStrings;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("error");
+                return inputStrings;
             }
         }
         protected abstract string Changer(Match match);
     }
 }
-//http://www.cyberforum.ru/csharp-beginners/thread1300935.html
+
+

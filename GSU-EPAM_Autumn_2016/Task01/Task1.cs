@@ -25,7 +25,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
             foreach (var itemFileName in fileNameaArray)
             {
                 Console.WriteLine("File is: " + itemFileName); //show file name with worked now
-                string[] war = Program.LoadFileInStringPerLineStrings(itemFileName, "Task01"); //read all file per line
+                string[] war = ReadAndWriteTofilePerString.LoadFileInStringPerLineStrings(itemFileName, "Task01"); //read all file per line
                 StringBuilder[] result = CountSummFromAllString(war); //work with file data in string
 
                 //show result
