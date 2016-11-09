@@ -12,13 +12,17 @@ namespace GSU_EPAM_Autumn_2016.Task03
         {
             string fileNameToRead = "Input1.csv";
             string fileNameToWrite = "Output1.csv";
-            StringBuilder strResult = new StringBuilder();
-            string resultFromStrB = "";
-            string[] resultFromStrBArray;
 
-            string commentPatternToEnd = @"(\/\*[^;]+\*\/)|(\/\*\*\/)|[/][/][^\n]+|([/][/]+)";
-            int indexOfArray = 0;
-            string[] stringFromFile = ReadAndWriteTofilePerString.LoadFileInStringPerLineStrings(fileNameToRead, "Task03"); //read all file per line in array
+            StringBuilder strResult = new StringBuilder();
+
+            string resultFromStringBuilder = "";
+            string[] resultFromStringBuilderArray;
+
+            string commentPattern = @"(\/\*[^;]+\*\/)|(\/\*\*\/)|[/][/][^\n]+|([/][/]+)";
+            string[] stringFromFile = ReadAndWriteTofilePerString.LoadFileInStringPerLineStrings(fileNameToRead,
+                "Task03"); //read all file per line in array
+
+            #region Union file data to string
 
             foreach (var lineWrite in stringFromFile)
             {
@@ -26,14 +30,24 @@ namespace GSU_EPAM_Autumn_2016.Task03
                 strResult.Append('\n');
             }
 
+            #endregion
 
-            if (Regex.IsMatch(strResult.ToString(), commentPatternToEnd))
+            #region Find pattern and replase
+
+            if (Regex.IsMatch(strResult.ToString(), commentPattern))
             {
-                resultFromStrB = Regex.Replace(strResult.ToString(), commentPatternToEnd, "");
+                resultFromStringBuilder = Regex.Replace(strResult.ToString(), commentPattern, "");
             }
-            resultFromStrBArray = resultFromStrB.Split('\n');
-            ReadAndWriteTofilePerString.SaveStringinFilePerLineStrings("Task03", resultFromStrBArray, fileNameToWrite);
+
+            #endregion
+
+            resultFromStringBuilderArray = resultFromStringBuilder.Split('\n');
+            //split result to array for write in to file per string
+
+            ReadAndWriteTofilePerString.SaveStringinFilePerLineStrings("Task03", resultFromStringBuilderArray,
+                fileNameToWrite);
         }
     }
 }
+
 // gjcktlybq [\/\/][^;]?\n+

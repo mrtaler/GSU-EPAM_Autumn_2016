@@ -7,44 +7,43 @@ using System.Globalization;
 
 namespace GSU_EPAM_Autumn_2016.Task02
 {
+    /// <summary>
+    /// Class for BlrRouble change 
+    /// </summary>
     class BlrRubleChangeUniversalChange : UniversalChange
     {
-
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public BlrRubleChangeUniversalChange()
             : base()
         {
         }
-
+        /// <summary>
+        /// Overrided method for Blr Change
+        /// </summary>
+        /// <param name="match">Blr pattern match</param>
+        /// <returns>blr without spaces</returns>
         protected override string Changer(Match match)
         {
             try
             {
                 StringBuilder tempDigit = new StringBuilder("");
+                //find all digit
                 var digit = Regex.Matches(match.Value.ToString(), @"\d+");
+                #region delete spaces in digit data  
                 foreach (var item in digit)
                 {
                     tempDigit.Append(item.ToString());
                 }
+                #endregion
                 var ww = tempDigit.ToString() + " ";
+                //find all digit with spaces and replace without spaces
                 string result = Regex.Replace(match.Value.ToString(), @"(\b[^a-zA-Z.]+ )", ww);
-                // if (result.IndexOf(" ") > 2)
-                //  { 
                 return result;
-                //  }
-                // else
-                //   {
-                //    StringBuilder temp = new StringBuilder("");
-                //    int index = result.IndexOf('b');
-                //    temp.Append(result.Substring(0, index));
-                //    temp.Replace(" ", "");
-                //    temp.Append(result.Substring(result.IndexOf("b") - 1));
-                //    return (" "+temp.ToString());
-                //}
-
             }
             catch (Exception)
             {
-
                 Console.WriteLine("Exception to delete spaces in summ");
                 return "Error";
             }

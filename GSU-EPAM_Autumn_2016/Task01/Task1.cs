@@ -25,8 +25,9 @@ namespace GSU_EPAM_Autumn_2016.Task01
             foreach (var itemFileName in fileNameaArray)
             {
                 Console.WriteLine("File is: " + itemFileName); //show file name with worked now
-                string[] war = ReadAndWriteTofilePerString.LoadFileInStringPerLineStrings(itemFileName, "Task01"); //read all file per line
-                StringBuilder[] result = CountSummFromAllString(war); //work with file data in string
+                string[] fileDataPerString = ReadAndWriteTofilePerString.LoadFileInStringPerLineStrings(itemFileName, "Task01"); //read all file per line
+
+                StringBuilder[] result = CountSummFromAllString(fileDataPerString); //work with file data in string
 
                 //show result
                 foreach (var itemRes in result)
@@ -35,11 +36,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
                 }
                 Console.WriteLine();
             }
-
-
-
         }
-
         /// <summary>
         /// Method for count sum from string with using the pointer with the index 0 
         /// </summary>
@@ -50,21 +47,23 @@ namespace GSU_EPAM_Autumn_2016.Task01
         {
             double sumResult = 0;
             int stringErrorCount = 0;
+
             StringBuilder resultString = new StringBuilder();
+            #region Check input data for not null
             try
             {
+                //work with input array per string
                 foreach (var item in fileDataPerLineinString)
                 {
                     int indexToWork = 0;
-                    string[] format = item.Split(';');//CSV Separator
+                    string[] format = item.Split(';');//split string using CSV Separator
+                    #region check index[0] for valid data
                     try
                     {
                         indexToWork = Convert.ToInt32(format[0]); //find index
-                                                                  //if indexToWork is valid:
+                        //if indexToWork is valid:
                         try
                         {
-                            //  Console.WriteLine(double.Parse(format[indexToWork].ToString()));
-
                             sumResult += double.Parse(format[indexToWork]);//adding valid finded number to sum result
                             #region output string builder
                             if (resultString.Length == 0)
@@ -87,8 +86,8 @@ namespace GSU_EPAM_Autumn_2016.Task01
                         }
                         catch (Exception)
                         {
-                            //  Console.WriteLine("symbol is valid");
                             stringErrorCount++;
+
                             //output strib builder
                             if (resultString.Length == 0)
                                 resultString.Append("result(");
@@ -99,6 +98,7 @@ namespace GSU_EPAM_Autumn_2016.Task01
                         //Console.WriteLine("First symbol is not number");
                         stringErrorCount++;
                     }
+                    #endregion
                 }
             }
             catch (Exception)
@@ -107,15 +107,14 @@ namespace GSU_EPAM_Autumn_2016.Task01
                 Console.WriteLine("input data is null");
                 resultString.Append("result(");
             }
+            #endregion
+            #region return data
             return (new StringBuilder[2]
                {
                  resultString.Append(") = " + Math.Round(sumResult,2)), //first returned summ value in special format
                  new  StringBuilder("error-lines = "+stringErrorCount)  //second returned count error on special format
                });
+            #endregion
         }
     }
 }
-
-
-
-

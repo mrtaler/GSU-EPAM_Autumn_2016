@@ -16,8 +16,8 @@ namespace GSU_EPAM_Autumn_2016
             new Task2();
             Console.WriteLine("*******************Task 03*******************");
             new Task3();
+            Console.WriteLine("*********************end*********************");
             Console.ReadKey();
         }
-
     }
 }

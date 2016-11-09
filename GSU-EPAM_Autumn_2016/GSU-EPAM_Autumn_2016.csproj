@@ -62,6 +62,7 @@
     <None Include="Task01\Input5.csv" />
     <None Include="Task02\Input1 - Копировать.csv" />
     <None Include="Task02\Input1.csv" />
+    <None Include="Task02\Output1.csv" />
     <None Include="Task03\Input1.csv" />
     <None Include="Task03\Output1.csv" />
   </ItemGroup>

@@ -6,18 +6,27 @@ using System.IO;
 
 namespace GSU_EPAM_Autumn_2016
 {
-    class ReadAndWriteTofilePerString
+    /// <summary>
+    /// Class for read and write per string
+    /// </summary>
+    static class ReadAndWriteTofilePerString
     {
+        /// <summary>
+        /// Method for read file per string
+        /// </summary>
+        /// <param name="fileName">File name</param>
+        /// <param name="task">Task</param>
+        /// <returns>File data in array</returns>
         public static string[] LoadFileInStringPerLineStrings(string fileName, string task)
         {
-            //find file in working directory
+
+            #region find file in working directory
             string substr = "bin\\debug";
             string filePatch = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
                  .ToLower().Replace(substr, "")
                  + task + "\\" + fileName;
-
-            string[] fileDataPerLine = null;
-            #region read and write not null stribg from file
+            #endregion
+            #region read and write not null string from file
             try
             {
                 int count = 0;
@@ -43,9 +52,9 @@ namespace GSU_EPAM_Autumn_2016
                     Console.WriteLine("s: File is not open for read");
                 }
                 #endregion
-                //generate string based on conut not null strings in file
-                fileDataPerLine = new string[count];
-                #region write all not null string from file
+                //generate output array based on conut not null strings in file
+                string[] fileDataPerLine = new string[count];
+                #region write all not null string from file in output array
                 try
                 {
                     using (StreamReader ins = new StreamReader(filePatch))
@@ -65,7 +74,7 @@ namespace GSU_EPAM_Autumn_2016
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("s: File is not open for read and write to file");
+                    Console.WriteLine("File is not open for read and write to array");
                     fileDataPerLine = null;
                 }
                 #endregion
@@ -78,15 +87,21 @@ namespace GSU_EPAM_Autumn_2016
             }
             #endregion
         }
-
+        /// <summary>
+        /// Method for write array in file per string
+        /// </summary>
+        /// <param name="task">Task</param>
+        /// <param name="inputStrings">Input array</param>
+        /// <param name="fileNameToWrite">File name for write</param>
         public static void SaveStringinFilePerLineStrings(string task, string[] inputStrings, string fileNameToWrite)
         {
-            //find file in working directory
+            #region find file in working directory
             string substr = "bin\\debug";
             string filePatch = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
                  .ToLower().Replace(substr, "")
                  + task + "\\" + fileNameToWrite;
-            #region Open file
+            #endregion
+            #region write array in to file
             try
             {
                 //file open to write
@@ -100,9 +115,10 @@ namespace GSU_EPAM_Autumn_2016
             }
             catch (Exception)
             {
-                Console.WriteLine("s: File is not open for read");
+                Console.WriteLine("File is not open for write");
             }
             #endregion
         }
     }
 }
+
