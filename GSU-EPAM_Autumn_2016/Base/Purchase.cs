@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GSU_EPAM_Autumn_2016.Base
 {
+
     /// <summary>
     /// Base Class for Goods Purchase
     /// </summary>
@@ -94,21 +95,12 @@ namespace GSU_EPAM_Autumn_2016.Base
         /// <returns>CSV with separator ";"</returns>
         public override string ToString()
         {
-            return (
-                productName + ';' + '\t' + '\t' +
-                quantityOfGoods + ';' + '\t' +
-                price + ';' + '\t' +
-                CostOfGoods
-                );
-        }
-        /// <summary>
-        /// Overrided method to find equals 
-        /// </summary>
-        /// <param name="other">copy of PurchaseOfGoods for comparison </param>
-        /// <returns>true if productName and price is Equals</returns>
-        public virtual bool Equals(Purchase other)
-        {
-            return (this.productName == other.productName && this.price == other.price);
+            return String.Format(
+                "{0,-10} {1, -10} {2,-10} {3,-10}",
+                productName,
+                price,
+                quantityOfGoods,
+                CostOfGoods);
         }
     }
 }

@@ -46,15 +46,20 @@
     <Compile Include="Base\PricePurchase.cs" />
     <Compile Include="Base\Purchase.cs" />
     <Compile Include="Base\PurchaseCollection.cs" />
+    <Compile Include="Base\PurchaseSort.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="addon.csv" />
+    <None Include="addon.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="in.csv" />
+    <None Include="in.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

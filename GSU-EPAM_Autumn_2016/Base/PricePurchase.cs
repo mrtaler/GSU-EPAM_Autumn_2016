@@ -46,10 +46,11 @@ namespace GSU_EPAM_Autumn_2016.Base
         /// <returns>CSV with separator ";"</returns>
         public override string ToString()
         {
-            return
-                (
-                base.ToString() + ";" + '\t' + '\t'
-                + discount
+            return (
+                String.Format(
+                "{0,-40} {1,-10}",
+                base.ToString(),
+                discount)
                 );
         }
         /// <summary>
@@ -61,5 +62,7 @@ namespace GSU_EPAM_Autumn_2016.Base
             decimal result = (Price - discount) * QuantityOfGoods;
             return Math.Round(result, 2);
         }
+
+
     }
 }
