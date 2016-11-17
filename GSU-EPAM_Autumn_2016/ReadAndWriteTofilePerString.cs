@@ -42,11 +42,8 @@ namespace GSU_EPAM_Autumn_2016
                         Array.Resize(ref fileDataPerLine, fileDataPerLine.Length + 1);
                         fileDataPerLine[index] = fileData;
                         index++;
-                        Console.WriteLine(fileData);
                     }
-
-
-                    fileData = ins.ReadToEnd();
+                    //  fileData = ins.ReadToEnd();
                 }
                 return fileDataPerLine;
             }

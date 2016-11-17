@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 
 /* " */string/* s2 = /* " */ "hello";
+/* " */ string q1 = /*"    //   "*/"test";
+
 
 namespace ConsoleApplication3
 {  /// class Program here

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 
 string "hello";
+ string q1 = "test";
+
 
 namespace ConsoleApplication3
 {  
@@ -21,7 +23,7 @@ namespace ConsoleApplication3
       char cc = '/';
       string str = "'";
       char ccc = '*';
-      char cccc = '"'; 
+      char cccc = '"'; //"hjhkjhkj
       Console.WriteLine("/*dfsdf*////****/**//**Hello, world!\\"); 
       int ccccc = 100/'*';
       char f = '\\';
