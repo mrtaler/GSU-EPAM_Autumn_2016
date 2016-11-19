@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,21 +13,22 @@ namespace GSU_EPAM_Autumn_2016
         {
             #region Find file in working directory
             string filePatch = args[0] + ".csv";
-        }
             #endregion
+
+            List<string> coordinats;
             try
             {
                 using (StreamReader ins = new StreamReader(filePatch))
                 {
-                    purchaseList = new List<Purchase>();
+                    coordinats = new List<string>();
                     string fileDataPerString = null;
                     while ((fileDataPerString = ins.ReadLine()) != null)
                     {
                         try
                         {
-                            purchaseList.Add(createPurchase(fileDataPerString));
+                            coordinats.Add(fileDataPerString);
                         }
-                        catch (CsvStringException ex)
+                        catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
                             if (ex.InnerException != null)
@@ -34,7 +36,7 @@ namespace GSU_EPAM_Autumn_2016
                                 Console.WriteLine(ex.InnerException.Message);
                                 Console.WriteLine(ex.InnerException.TargetSite);
                             }
-Console.WriteLine();
+                            Console.WriteLine();
                         }
                     }
                 }
@@ -42,7 +44,7 @@ Console.WriteLine();
             catch (FileNotFoundException ex)
             {
                 Console.WriteLine("FileNotFoundException :" + ex.TargetSite);
-                purchaseList = new List<Purchase>();
+                coordinats = new List<string>();
             }
         }
     }
