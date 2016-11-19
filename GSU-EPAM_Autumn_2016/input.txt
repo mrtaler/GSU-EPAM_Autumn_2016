@@ -10,7 +10,7 @@ using System.Text;
 
 /* " */string/* s2 = /* " */ "hello";
 /* " */ string q1 = /*"    //   "*/"test";
-
+char f2 = '\"'; // symbol " for testing purposes
 
 namespace ConsoleApplication3
 {  /// class Program here

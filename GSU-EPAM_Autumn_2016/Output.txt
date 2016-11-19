@@ -7,7 +7,7 @@ using System.Text;
 
 string "hello";
  string q1 = "test";
-
+char f2 = '\"';
 
 namespace ConsoleApplication3
 {  
@@ -23,7 +23,7 @@ namespace ConsoleApplication3
       char cc = '/';
       string str = "'";
       char ccc = '*';
-      char cccc = '"'; //"hjhkjhkj
+      char cccc = '"';
       Console.WriteLine("/*dfsdf*////****/**//**Hello, world!\\"); 
       int ccccc = 100/'*';
       char f = '\\';

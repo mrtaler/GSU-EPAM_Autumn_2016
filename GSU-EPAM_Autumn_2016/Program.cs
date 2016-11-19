@@ -33,6 +33,12 @@ namespace GSU_EPAM_Autumn_2016
             {
                 resultFromStringBuilder = Regex.Replace(strResult.ToString(), commentPattern3, matcher);
             }
+            // del // comment
+            if (Regex.IsMatch(strResult.ToString(), @"(?<=[;]| ).?(([\/]{2,}.+)|\/\/)"))
+            {
+                resultFromStringBuilder = Regex.Replace(resultFromStringBuilder, @"(?<=[;]| ).?(([\/]{2,}.+)|\/\/)", "");
+                ;
+            }
 
             string[] resultFromStringBuilderArray = resultFromStringBuilder.Split('\n'); //split result to array for write in to file per string
 
