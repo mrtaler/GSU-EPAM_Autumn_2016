@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GSU_EPAM_Autumn_2016
 {
@@ -11,41 +6,16 @@ namespace GSU_EPAM_Autumn_2016
     {
         static void Main(string[] args)
         {
-            #region Find file in working directory
-            string filePatch = args[0] + ".csv";
-            #endregion
+            LineSegmentList lineLenList = new LineSegmentList(args[0]);
 
-            List<string> coordinats;
-            try
+
+            //Shows the number of equal length   
+            foreach (var item in lineLenList.LenNumList)
             {
-                using (StreamReader ins = new StreamReader(filePatch))
-                {
-                    coordinats = new List<string>();
-                    string fileDataPerString = null;
-                    while ((fileDataPerString = ins.ReadLine()) != null)
-                    {
-                        try
-                        {
-                            coordinats.Add(fileDataPerString);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                            if (ex.InnerException != null)
-                            {
-                                Console.WriteLine(ex.InnerException.Message);
-                                Console.WriteLine(ex.InnerException.TargetSite);
-                            }
-                            Console.WriteLine();
-                        }
-                    }
-                }
+                Console.WriteLine(item);
             }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine("FileNotFoundException :" + ex.TargetSite);
-                coordinats = new List<string>();
-            }
+
+            Console.ReadKey();
         }
     }
 }
