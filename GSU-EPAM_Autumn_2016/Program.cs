@@ -20,9 +20,9 @@ namespace GSU_EPAM_Autumn_2016
             #region UNION all strigs in 1 mega string
             StringBuilder strResult = new StringBuilder();
 
-            foreach (var VARIABLE in stringFromFile)
+            foreach (var itemStringFromFile in stringFromFile)
             {
-                strResult.Append(VARIABLE);
+                strResult.Append(itemStringFromFile);
                 strResult.Append('\n');
             }
             #endregion
