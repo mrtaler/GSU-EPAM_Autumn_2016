@@ -36,5 +36,10 @@
                 ";" +
                 Num);
         }
+
+        public void IncreaseNum()
+        {
+            Num++;
+        }
     }
 }

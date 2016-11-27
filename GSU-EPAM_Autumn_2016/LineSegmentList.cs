@@ -10,18 +10,7 @@ namespace GSU_EPAM_Autumn_2016
     /// </summary>
     public class LineSegmentList
     {
-
-        private List<LineSegment> lineSegmentListColl;
-        /// <summary>
-        /// Line segment collections from file
-        /// </summary>
-        public List<LineSegment> LineSegmentListColl
-        {
-            get
-            {
-                return new List<LineSegment>(lineSegmentListColl);
-            }
-        }
+        private List<LenNum> lenNumList;
         /// <summary>
         /// LenNumCollections
         /// </summary>
@@ -29,7 +18,11 @@ namespace GSU_EPAM_Autumn_2016
         {
             get
             {
-                return makeLenNumList();
+                return lenNumList;
+            }
+            set
+            {
+                lenNumList = value;
             }
         }
         /// <summary>
@@ -37,7 +30,7 @@ namespace GSU_EPAM_Autumn_2016
         /// </summary>
         public LineSegmentList()
         {
-            lineSegmentListColl = null;
+            lenNumList = null;
         }
         /// <summary>
         /// Constructor with param(file name)
@@ -45,20 +38,38 @@ namespace GSU_EPAM_Autumn_2016
         /// <param name="fileName">File name without .txt</param>
         public LineSegmentList(string fileName)
         {
-            #region Find file in working directory
-            string filePatch = fileName + ".txt";
+            #region find file in working directory
+            string substr = "bin\\debug";
+            string filePatch = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
+                 .ToLower().Replace(substr, "")
+                 + "\\" + fileName + ".txt";
             #endregion
+
             try // open file 
             {
                 using (StreamReader ins = new StreamReader(filePatch))
                 {
                     string fileDataPerString;
-                    lineSegmentListColl = new List<LineSegment>();
+                    lenNumList = new List<LenNum>();
                     while ((fileDataPerString = ins.ReadLine()) != null) //read file by string
                     {
                         try
                         {
-                            lineSegmentListColl.Add(new LineSegment(fileDataPerString));
+                            LineSegment lnSeg = new LineSegment(fileDataPerString);//Calc lineSegment len
+                            LenNum lenNum = new LenNum(
+                                len: lnSeg.LengthLineSegment,
+                                num: 1
+                                ); //make new LenNum 
+
+                            int findLenInColl = lenNumList.BinarySearch(lenNum, new LenNumSort()); //find new LenNum in list
+                            if (findLenInColl >= 0) //if finded -> Num add 1
+                            {
+                                lenNumList[findLenInColl].IncreaseNum();
+                            }
+                            else //if not find add in collection new LenNum
+                            {
+                                lenNumList.Insert(~findLenInColl, lenNum);
+                            }
                         }
                         catch (CsvStringException ex)
                         {
@@ -77,28 +88,6 @@ namespace GSU_EPAM_Autumn_2016
             {
                 Console.WriteLine("FileNotFoundException :" + ex.TargetSite);
             }
-        }
-        /// <summary>
-        /// Method for calc equals length 
-        /// </summary>
-        /// <returns>Collection (len;num)</returns>
-        private List<LenNum> makeLenNumList()
-        {
-            List<LineSegment> distinctLengthLineSegment = lineSegmentListColl.Distinct(new LineSegmentEqualy()).ToList(); //Find equals lenght
-
-            distinctLengthLineSegment.Sort(new LineSegmentSort()); //Sort by Comparer
-
-            List<LenNum> lenNumList = new List<LenNum>();
-
-
-            foreach (var item in distinctLengthLineSegment)
-            {
-                lenNumList.Add(new LenNum(
-                   len: item.LengthLineSegment,
-                   num: lineSegmentListColl.Count(p => p.LengthLineSegment == item.LengthLineSegment) //count not equals len
-                    ));
-            }
-            return lenNumList;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace GSU_EPAM_Autumn_2016
     {
         static void Main(string[] args)
         {
-            LineSegmentList lineLenList = new LineSegmentList(args[0]);
+            LineSegmentList lineLenList = new LineSegmentList("in");
 
 
             //Shows the number of equal length   
