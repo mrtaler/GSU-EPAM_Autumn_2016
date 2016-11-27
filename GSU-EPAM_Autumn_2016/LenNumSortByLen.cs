@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace GSU_EPAM_Autumn_2016
 {
-    class LenNumSort : IComparer<LenNum>
+    /// <summary>
+    /// Len Num sort by len increase
+    /// </summary>
+    class LenNumSortByLen : IComparer<LenNum>
     {
         public int Compare(LenNum x, LenNum y)
         {

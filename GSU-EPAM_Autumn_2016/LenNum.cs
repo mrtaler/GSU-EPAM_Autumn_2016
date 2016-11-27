@@ -1,9 +1,12 @@
-﻿namespace GSU_EPAM_Autumn_2016
+﻿using System;
+using System.Collections.Generic;
+
+namespace GSU_EPAM_Autumn_2016
 {
     /// <summary>
     /// Class for output data
     /// </summary>
-    public class LenNum
+    public class LenNum : IComparable<LenNum>
     {
         public double Len;
         public int Num;
@@ -41,5 +44,10 @@
         {
             Num++;
         }
+        public int CompareTo(LenNum y)
+        {
+            return y.Num.CompareTo(this.Num);
+        }
+
     }
 }

@@ -8,9 +8,11 @@ namespace GSU_EPAM_Autumn_2016
         {
             LineSegmentList lineLenList = new LineSegmentList("in");
 
-
             //Shows the number of equal length   
-            foreach (var item in lineLenList.LenNumList)
+            var lenNumCollectionForPrint = lineLenList.LenNumList;
+            lenNumCollectionForPrint.Sort();
+
+            foreach (var item in lenNumCollectionForPrint)
             {
                 Console.WriteLine(item);
             }

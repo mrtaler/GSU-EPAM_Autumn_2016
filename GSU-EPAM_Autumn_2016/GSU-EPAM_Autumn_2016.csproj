@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LenNum.cs" />
-    <Compile Include="LenNumSort.cs" />
+    <Compile Include="LenNumSortByLen.cs" />
     <Compile Include="LineSegment.cs" />
     <Compile Include="LineSegmentList.cs" />
     <Compile Include="Program.cs" />

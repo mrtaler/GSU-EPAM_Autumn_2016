@@ -18,11 +18,7 @@ namespace GSU_EPAM_Autumn_2016
         {
             get
             {
-                return lenNumList;
-            }
-            set
-            {
-                lenNumList = value;
+                return new List<LenNum>(lenNumList);
             }
         }
         /// <summary>
@@ -61,7 +57,7 @@ namespace GSU_EPAM_Autumn_2016
                                 num: 1
                                 ); //make new LenNum 
 
-                            int findLenInColl = lenNumList.BinarySearch(lenNum, new LenNumSort()); //find new LenNum in list
+                            int findLenInColl = lenNumList.BinarySearch(lenNum, new LenNumSortByLen()); //find new LenNum in list
                             if (findLenInColl >= 0) //if finded -> Num add 1
                             {
                                 lenNumList[findLenInColl].IncreaseNum();
