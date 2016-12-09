@@ -40,12 +40,8 @@
 
   <xs:simpleType name="Mark">
     <xs:restriction base="xs:float">
-      <xs:pattern value="(\d[.]\d)|([01]\d[.][0])"/>
+      <xs:pattern value="(\d[.]\d)|([1][0])[.][0]" />
     </xs:restriction>
   </xs:simpleType>
-
-
-
-
+  <!--(\d[.]\d)|([01]\d[.][0])-->
 </xs:schema>
-
